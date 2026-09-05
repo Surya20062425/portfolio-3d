@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+  
+  .neon-text {
+    @apply text-primary;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5),
+                0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  
+  .gradient-border {
+    @apply relative;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl;
+    padding: 2px;
+    background: linear-gradient(45deg, #00d4ff, #7b2cbf, #00d4ff);
+    background-size: 300% 300%;
+    animation: gradient-shift 3s ease infinite;
+    z-index: -1;
+    mask:
+      linear-gradient(#fff 0.5px, #fff 0.5px) 0 0 / 100% 0.5px,
+      linear-gradient(90deg, #fff 0.5px, #fff 0.5px) 0 0 / 0.5px 100%;
+    background-clip: padding-box;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
